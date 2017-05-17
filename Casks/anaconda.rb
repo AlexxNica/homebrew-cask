@@ -9,10 +9,17 @@ cask 'anaconda' do
   depends_on macos: '>= :lion'
   container type: :naked
 
-  installer script: "Anaconda3-#{version}-MacOSX-x86_64.sh",
-            args:   ['-b']
+  installer script: {
+                      executable: "Anaconda3-#{version}-MacOSX-x86_64.sh",
+                      args:       ['-b', '-p', "#{HOMEBREW_PREFIX}/anaconda3"],
+                      sudo:       true,
+                    }
 
-  uninstall delete: '~/anaconda3'
+  postflight do
+    set_ownership "#{HOMEBREW_PREFIX}/anaconda3"
+  end
+
+  uninstall delete: "#{HOMEBREW_PREFIX}/anaconda3"
 
   zap delete: [
                 '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.continuum.io.sfl',
@@ -20,6 +27,7 @@ cask 'anaconda' do
               ]
 
   caveats do
-    path_environment_variable '~/anaconda3/bin'
+    path_environment_variable "#{HOMEBREW_PREFIX}/anaconda3/bin"
+    files_in_usr_local
   end
 end

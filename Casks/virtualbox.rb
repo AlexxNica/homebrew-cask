@@ -1,18 +1,10 @@
 cask 'virtualbox' do
-  if MacOS.version <= :lion
-    version '4.3.40-110317'
-    sha256 'eb70fc0f36844ced6dc7deeb30397866fbaffb4a8dfb6071b047e943cae6a312'
-  elsif MacOS.version == :mountain_lion
-    version '5.0.32-112930'
-    sha256 'c693083f1df96a95d5faf794b22737df103973de3e0d89f04734d401962f81cf'
-  else
-    version '5.1.18-114002'
-    sha256 '95bb764272b144686247de16c445732d1a944c098087d7e3eed69764590926da'
-  end
+  version '5.1.22-115126'
+  sha256 '405cbb3795f95fb74a216293d1160b2adfb264a43476e1366e3c897e0efa36aa'
 
   url "http://download.virtualbox.org/virtualbox/#{version.sub(%r{-.*}, '')}/VirtualBox-#{version}-OSX.dmg"
   appcast 'http://download.virtualbox.org/virtualbox/LATEST.TXT',
-          checkpoint: '08a7858c784bd83d75de1c1a71236bfb97a505db8f3cf3ba30e2009d4a5231ef'
+          checkpoint: '4bc244bbabe0bdb1c33d1813128589ceb3112be9ccebfccc1100ff6ca358b1c3'
   name 'Oracle VirtualBox'
   homepage 'https://www.virtualbox.org/'
 

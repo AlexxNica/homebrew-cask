@@ -1,12 +1,12 @@
 cask 'black-screen' do
-  version '0.2.140'
-  sha256 '701a3768f4d6954facd9dcf7ee50712a6ab7def39f1e680e62869f23c2626d2e'
+  version '0.2.144'
+  sha256 '518cb4d2825b42cb5f0b2387f73c0b101c6d85e155005ff8ce5ffdb41af1fd78'
 
-  url "https://github.com/vshatskyi/black-screen/releases/download/v#{version}/black-screen-#{version}-mac.zip"
-  appcast 'https://github.com/vshatskyi/black-screen/releases.atom',
-          checkpoint: '495f333af99d83359a752658e2e8957a6a31bad25377dbdf2fa3641ef506620d'
+  url "https://github.com/railsware/black-screen/releases/download/v#{version}/black-screen-#{version}-mac.zip"
+  appcast 'https://github.com/railsware/black-screen/releases.atom',
+          checkpoint: '8cd539e21d411e64fe0e4f64be52cbcaccc4ee8b1bc1d61f57b694779ca20850'
   name 'Black Screen'
-  homepage 'https://github.com/vshatskyi/black-screen'
+  homepage 'https://github.com/railsware/black-screen'
 
   app 'Black Screen.app'
 

@@ -102,14 +102,16 @@ cask 'adobe-animate-cc' do
     'uk_UA'
   end
 
-  url "http://trials3.adobe.com/AdobeProducts/FLPR/#{version.dots_to_underscores}/osx10-64/Animate_#{version.major}_LS20.dmg",
+  url "https://trials3.adobe.com/AdobeProducts/FLPR/#{version.dots_to_underscores}/osx10-64/Animate_#{version.major}_LS20.dmg",
       user_agent: :fake,
       cookies:    { 'MM_TRIALS' => '1234' }
   name 'Adobe Animate CC'
   homepage 'https://www.adobe.com/products/animate.html'
 
-  installer script: "#{staged_path}/Adobe Animate CC 2015/Install.app/Contents/MacOS/Install",
-            args:   ['--mode=silent', "--deploymentFile=#{staged_path}/Adobe Animate CC 2015/deploy/#{language}_Deployment.xml"]
+  installer script: {
+                      executable: "#{staged_path}/Adobe Animate CC 2015/Install.app/Contents/MacOS/Install",
+                      args:       ['--mode=silent', "--deploymentFile=#{staged_path}/Adobe Animate CC 2015/deploy/#{language}_Deployment.xml"],
+                    }
 
   uninstall script: {
                       executable: "#{staged_path}/Adobe Animate CC 2015/Install.app/Contents/MacOS/Install",

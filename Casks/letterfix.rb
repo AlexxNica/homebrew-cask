@@ -1,10 +1,10 @@
 cask 'letterfix' do
-  version '2.5.2,66866'
-  sha256 'd67d29760cb0cdc417d352ee029756cbec1f2cd7a37e262c67591c948a04cab8'
+  version '2.5.3,67423'
+  sha256 'b6125a0f55ef0c52711403613473ba6fc396745f7d2ace88cc46f9d9df57b41d'
 
-  url "http://dl.osdn.jp/letter-fix/#{version.after_comma}/LetterFix-#{version.before_comma}.dmg"
-  appcast 'https://osdn.jp/projects/letter-fix/releases/rss',
-          checkpoint: '2ee4d7d79be2178ed1e5f66bbe4bdfda5e5173d918bd7a545a9adf8c15844084'
+  url "http://onet.dl.osdn.jp/letter-fix/#{version.after_comma}/LetterFix-#{version.before_comma}.dmg"
+  appcast 'https://ja.osdn.net/projects/letter-fix/releases/rss',
+          checkpoint: 'bdb6da9001b4a915f5059542ea8152bb4103fec4df47e028afbefce63d4e1b34'
   name 'LetterFix'
   homepage 'https://osdn.jp/projects/letter-fix/'
 

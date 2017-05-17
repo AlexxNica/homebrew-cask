@@ -1,10 +1,10 @@
 cask 'keybase' do
-  version '1.0.20-20170317000044,73c5db6'
-  sha256 '2f31db3668db8d613ce85fc3ef4bf6f933c64eb2f46e8c664a777166b1f8e3e0'
+  version '1.0.22-20170515141716,b608f0e'
+  sha256 '0d6d03b6d5b13e0916f18d156dd83a5b46d9f6b25625af8723f211ad39d261cb'
 
   url "https://prerelease.keybase.io/darwin/Keybase-#{version.before_comma}%2B#{version.after_comma}.dmg"
   appcast 'https://prerelease.keybase.io/update-darwin-prod-v2.json',
-          checkpoint: 'b37694bcb085744fdd02746801d646f7f5745ed861aa2866848cc4442a1a3f74'
+          checkpoint: '862c9f6e526b007329ec3166f8e6fa841ff9b7c068ebd46600144e8944333dea'
   name 'Keybase'
   homepage 'https://keybase.io/'
 
@@ -17,11 +17,32 @@ cask 'keybase' do
                    args: ["--app-path=#{appdir}/Keybase.app", '--run-mode=prod', '--timeout=10']
   end
 
-  uninstall_preflight do
-    if system_command('launchctl', args: ['list']).stdout =~ %r{/^\d+.*keybase.Electron/}
-      system_command 'killall', args: ['-kill', 'Keybase']
-    end
-    system_command "#{appdir}/Keybase.app/Contents/SharedSupport/bin/keybase",
-                   args: ['uninstall']
-  end
+  uninstall launchctl:  'keybase.Helper',
+            login_item: 'Keybase',
+            signal:     [
+                          ['TERM', 'keybase.Electron'],
+                          ['TERM', 'keybase.ElectronHelper'],
+                          ['KILL', 'keybase.Electron'],
+                          ['KILL', 'keybase.ElectronHelper'],
+                        ],
+            script:     {
+                          executable: "#{appdir}/Keybase.app/Contents/SharedSupport/bin/keybase",
+                          args:       ['uninstall'],
+                        }
+
+  zap delete: [
+                '~/Library/Application Support/Keybase',
+                '~/Library/Caches/Keybase',
+                '~/Library/Group Containers/keybase',
+                '~/Library/Logs/Keybase.app.log',
+                '~/Library/Logs/keybase.kbfs.log',
+                '~/Library/Logs/keybase.service.log',
+                '~/Library/Logs/keybase.start.log',
+                '~/Library/Logs/keybase.updater.log',
+                '~/Library/Preferences/keybase.Electron.plist',
+                '~/Library/Preferences/keybase.ElectronHelper.plist',
+                '/Library/Logs/keybase.system.log',
+                '/Library/PrivilegedHelperTools/keybase.Helper',
+              ],
+      rmdir:  '/keybase'
 end

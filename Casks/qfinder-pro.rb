@@ -1,10 +1,10 @@
 cask 'qfinder-pro' do
-  version '2.4.0.0316'
-  sha256 '379b6e6c6b8611cda3394ba34fb754b0a67a82694f0d935c270b0f746941eef2'
+  version '2.4.2.0504'
+  sha256 '89b6df837c64a0b47e6cd364564998e7b0ffa4e8ec2b35d60d51984a596c006f'
 
   url "http://download.qnap.com/Storage/Utility/QNAPQfinderProMac-#{version}.dmg"
   appcast 'http://update.qnap.com/SoftwareRelease.xml',
-          checkpoint: '772710ef910a5786ba790ed6d963b7a9ae391d2459e18f65a631a4e0531935fd'
+          checkpoint: '2c5836e9594de024e3f94c1ebca6e2e4a40d662af2256eaa1ed6598a5e4957eb'
   name 'Qnap Qfinder Pro'
   homepage 'https://www.qnap.com/en/utilities#utliity_5'
 

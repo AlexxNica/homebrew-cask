@@ -1,8 +1,10 @@
 cask 'cevelop' do
-  version '1.6.0-201701201507'
-  sha256 'd6b9ad4657a3753290927ec451867ca4e43d441af9440c4653fa4424a66e8d23'
+  version '1.7.1-201704211123'
+  sha256 '5561659187360aa635ce04220544eb841e2e245f1a757c9b90f5f7a8ecef228f'
 
   url "https://www.cevelop.com/cevelop/downloads/cevelop-#{version}-macosx.cocoa.x86_64.tar.gz"
+  appcast 'https://www.cevelop.com/download/',
+          checkpoint: '913de30886b050e25b8e0996cb593a18412d2dec9d5664fac00b668cbd7e0ef9'
   name 'Cevelop'
   homepage 'https://www.cevelop.com/'
 
